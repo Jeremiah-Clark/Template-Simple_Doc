@@ -30,19 +30,13 @@ When you build the PDF, Pandoc reads the Markdown files and converts them to a f
 ## Project Structure
 
 ```
-├── 00-Frontmatter.md              # Opening description
-├── 01-COAM_Regulations.md         # Main regulatory content
-├── 02-Skill_Test_Considerations.md
-├── 03-Market_Considerations.md
-├── 04-GA_Regulatory_Documents.md  # Links to official documents
 ├── master.yaml                    # Metadata + style settings (edit)
 ├── titlepage.tex                  # Title page layout (edit)
-├── template.tex                   # Formatting template (reusable)
-├── gfm-to-latex.lua               # GFM-to-LaTeX filter (reusable)
-├── build.sh                       # Build script
+├── build.sh                       # Build script (edit)
+├── template.tex                   # Formatting template (usable as is)
+├── gfm-to-latex.lua               # GFM-to-LaTeX filter (usable as is)
 └── images/
-    ├── BraveryLogo.png
-    └── IMG_6435.JPEG
+    └── logo.png
 ```
 
 ## Building the PDF
