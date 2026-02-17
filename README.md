@@ -6,19 +6,19 @@ This template system is meant to be simple and reusable. It is designed to produ
 
 To create a new document:
 
-1. Copy these files to a new folder: `template.tex`, `gfm-to-latex.lua`, `build.sh`
-2. Copy and edit `titlepage.tex` if you want a different title page layout
-3. Create a new `master.yaml` with your document's metadata and style preferences
-4. Write your content as standard GFM Markdown files
+1. Copy these files to a new folder: `template.tex`, `titlepage.tex`, `gfm-to-latex.lua`, `build.sh`, and `master.yaml`
+2. Edit `master.yaml` with your document’s metadata and style preferences
+   - Edit `titlepage.tex` if you want a different title page layout
+3. Write your content as standard GFM Markdown files
    - Make each section its own file for maximum flexibility 
-6. Update the file list in `build.sh` to point to your new Markdown files
+4. Update the file list in `build.sh` to point to your new Markdown files
    - The PDF will begin with the title page, then each of documents listed in the build file, in the order listed
 
 ---
 
 ## How It Works
 
-The content files are written in **standard GitHub-Flavored Markdown** (GFM). They are fully readable on GitHub as-is — no LaTeX or special syntax anywhere in the content. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
+The content files are written in **standard GitHub-Flavored Markdown** (GFM). They are fully readable on GitHub as-is. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
 
 When you build the PDF, Pandoc reads the Markdown files and converts them to a formatted document using three supporting files:
 
@@ -91,7 +91,7 @@ All settings live in `master.yaml`. Every style setting has a built-in default, 
 | `fontsize` | `11pt` | Base font size |
 | `papersize` | `letter` | Paper size (`letter` or `a4`) |
 | `toc` | `true` | Whether to generate a table of contents |
-| `toc-depth` | `3` | How many heading levels to include in the TOC |
+| `toc-depth` | `2` | How many heading levels to include in the TOC |
 | `numbersections` | `true` | Whether to automatically number sections in the TOC |
 
 ### Fonts
@@ -149,11 +149,11 @@ The title bar will display the type name (e.g., "Warning"):
 Add your custom title text after the type marker. In the PDF, this replaces the default title in the title bar. On GitHub, the custom title text will appear as body text inside the callout (GitHub does not support custom alert titles).
 
 ```markdown
-> [!EXAMPLE] Example Tax Withholding Calculation
+> [!EXAMPLE] Example Tax Withholding
 >
 > A distributor has net revenues of $1,235,350.00 ...
 ```
 
-This creates a callout box with the title "Hand Count Cash-Out" instead of "Example".
+This creates a callout box with the title "Example Tax Withholding" instead of "Example".
 
 
