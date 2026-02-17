@@ -1,14 +1,18 @@
-# Template System
+# Template System - Simple Doc
+
+This template system is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
 
 ## Starting a New Project
 
-The template system is designed to be reusable. To create a new document:
+To create a new document:
 
 1. Copy these files to a new folder: `template.tex`, `gfm-to-latex.lua`, `build.sh`
 2. Copy and edit `titlepage.tex` if you want a different title page layout
 3. Create a new `master.yaml` with your document's metadata and style preferences
 4. Write your content as standard GFM Markdown files
-5. Update the file list in `build.sh` to point to your new Markdown files
+   - Make each section its own file for maximum flexibility 
+6. Update the file list in `build.sh` to point to your new Markdown files
+   - The PDF will begin with the title page, then each of documents listed in the build file, in the order listed
 
 ---
 
