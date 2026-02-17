@@ -1,4 +1,4 @@
-# Template System - Simple Doc
+# Simple Doc - Template System
 
 This template system is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
 
