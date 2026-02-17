@@ -1,33 +1,10 @@
-# Simple Doc - Template System
+# SimpleDoc - Template System
 
-This template system is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
-
-## Starting a New Project
-
-To create a new document:
-
-1. Copy these files to a new folder: `template.tex`, `titlepage.tex`, `gfm-to-latex.lua`, `build.sh`, and `master.yaml`
-2. Edit `master.yaml` with your document’s metadata and style preferences
-   - Edit `titlepage.tex` if you want a different title page layout
-3. Write your content as standard GFM Markdown files
-   - Make each section its own file for maximum flexibility 
-4. Update the file list in `build.sh` to point to your new Markdown files
-   - The PDF will begin with the title page, then each of documents listed in the build file, in the order listed
+I was looking for a simple way to write in Markdown — using a Git system for versioning and possible collaboration — while still producing consistently formatted, attractive files. I couldn't find anything that quite did what I wanted in the way I wanted. That's why I made this "SimpleDoc" template system. SimpleDoc is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
 
 ---
 
-## How It Works
-
-The content files are written in **standard GitHub-Flavored Markdown** (GFM). They are fully readable on GitHub as-is. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
-
-When you build the PDF, Pandoc reads the Markdown files and converts them to a formatted document using three supporting files:
-
-- **`template.tex`** — The reusable formatting template. Controls typography, colors, callout box styling, headers/footers, and overall page layout. You should not need to edit this file unless you want to change the structure of the document layout itself.
-- **`titlepage.tex`** — The title page layout. Edit this file to change how the title page looks (rearrange elements, change spacing, etc.). It is loaded by the template automatically.
-- **`gfm-to-latex.lua`** — A filter that bridges GFM features to the PDF. It converts callout blockquotes into styled boxes, makes images full-width, and inserts page breaks before each major section. You should not need to edit this file.
-- **`master.yaml`** — All document metadata and style settings in one place. This is the primary file you edit to change the document's title, author, fonts, colors, and other options. See **Settings Reference** below for a full list.
-
-## Project Structure
+### Project Structure
 
 ```
 ├── master.yaml                    # Metadata + style settings (edit)
@@ -39,15 +16,38 @@ When you build the PDF, Pandoc reads the Markdown files and converts them to a f
     └── logo.png
 ```
 
-## Building the PDF
+## Starting a New Project
 
-### Requirements
+To create a new document:
+
+1. Copy these files to a new folder: `template.tex`, `titlepage.tex`, `gfm-to-latex.lua`, `build.sh`, and `master.yaml`
+2. Edit `master.yaml` with your document’s metadata and style preferences
+   - Edit `titlepage.tex` if you want a different title page layout
+3. Write your content as standard GFM Markdown files
+   - Make each section its own file for maximum flexibility 
+4. Update the file list in `build.sh` to point to your new Markdown files
+   - The PDF will begin with the title page, then each of the documents listed in the build file, in the order listed
+
+### How It Works
+
+The content files are written in standard GitHub Flavored Markdown (GFM). They are fully readable on GitHub as-is. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
+
+When you build the PDF, Pandoc reads the Markdown files and converts them to a formatted document using three supporting files:
+
+- **`template.tex`** — The reusable formatting template. Controls typography, colors, callout box styling, headers/footers, and overall page layout. You should not need to edit this file unless you want to change the structure of the document layout itself.
+- **`titlepage.tex`** — The title page layout. Edit this file to change how the title page looks (rearrange elements, change spacing, etc.). It is loaded by the template automatically.
+- **`gfm-to-latex.lua`** — A filter that bridges GFM features to the PDF. It converts callout blockquotes into styled boxes, makes images full-width, and inserts page breaks before each major section. You should not need to edit this file.
+- **`master.yaml`** — All document metadata and style settings in one place. This is the primary file you edit to change the document's title, author, fonts, colors, and other options. See **Settings Reference** below for a full list.
+
+### Building the PDF
+
+#### Requirements
 
 - [Pandoc](https://pandoc.org/) (3.x recommended)
 - A LaTeX distribution with XeLaTeX (such as [TeX Live](https://tug.org/texlive/) or [MiKTeX](https://miktex.org/))
 - The fonts specified in `master.yaml` must be installed on your system (Noto Sans and Noto Sans Mono by default, available from [Google Fonts](https://fonts.google.com/noto))
 
-### Build Command
+#### Build Command
 
 ```bash
 chmod +x build.sh
@@ -56,7 +56,7 @@ chmod +x build.sh
 
 This generates `output.pdf` in the project directory.
 
-### A Note on Pandoc Versions
+#### A Note on Pandoc Versions
 
 The build script uses `--from gfm-alerts` instead of `--from gfm`. This disables Pandoc's built-in alert handling (added in 3.1.7), which would otherwise intercept callouts before the Lua filter can process them. If your version of Pandoc does not recognize `gfm-alerts`, it will print a harmless warning and continue. The build will still succeed.
 
@@ -123,17 +123,15 @@ For each callout, the template automatically derives the title bar and border co
 
 Available LaTeX color names include: `red`, `blue`, `green`, `orange`, `yellow`, `violet`, `black`, `cyan`, `magenta`, `teal`, `brown`, `purple`, `olive`, `darkgray`, `gray`, and `lightgray`.
 
----
-
-## Writing Callouts
+### Writing Callouts
 
 Callouts use GitHub's blockquote alert syntax. They render as colored alert boxes on GitHub and as styled framed boxes in the PDF.
 
-### Supported Types
+#### Supported Types
 
 `IMPORTANT`, `NOTE`, `WARNING`, `TIP`, `CAUTION`, `SUMMARY`, `EXAMPLE`
 
-### Basic Callout (Default Title)
+#### Basic Callout (Default Title)
 
 The title bar will display the type name (e.g., "Warning"):
 
@@ -144,16 +142,14 @@ The title bar will display the type name (e.g., "Warning"):
 > It supports **bold**, *italic*, [links](https://example.com), and lists.
 ```
 
-### Callout with Custom Title
+#### Callout with Custom Title
 
 Add your custom title text after the type marker. In the PDF, this replaces the default title in the title bar. On GitHub, the custom title text will appear as body text inside the callout (GitHub does not support custom alert titles).
 
 ```markdown
-> [!EXAMPLE] Example Tax Withholding
+> [!TIP] Example Tax Withholding
 >
 > A distributor has net revenues of $1,235,350.00 ...
 ```
 
-This creates a callout box with the title "Example Tax Withholding" instead of "Example".
-
-
+This creates a callout box titled "Example Tax Withholding" instead of "Tip".
