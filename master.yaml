@@ -2,7 +2,7 @@
 title: Title
 author: Author
 date: Date
-version: 
+version: ""
 keywords:
   - template
   - keywords
@@ -10,15 +10,15 @@ subject: A one-line document description.
 lang: en-US
 
 # Template controls
-logo: images/logo.png
+logo: images/logo.png     # Will be large and centered on title page
 disclaimer: "All information contained herein, unless otherwise indicated, is considered the intellectual property of ___. Do not disseminate or share such information unless expressly approved by ___ and its constituents."
-toc: true
-toc-depth: 2
-numbersections: true
+toc: true                 # true/false
+toc-depth: 2              # 1-6
+numbersections: true      # true/false
 
 # PDF settings
 fontsize: 11pt
-papersize: letter
+papersize: letter         # letter/a4
 
 # ---------------------------------------------------------------------------
 # Style settings
