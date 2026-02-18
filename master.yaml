@@ -1,12 +1,12 @@
 ---
-title: Title
-author: Author
-date: Date
+title: "Title"
+author: "Author"
+date: "Date"
 version: ""
 keywords:
   - template
   - keywords
-subject: A one-line document description.
+subject: "A one-line document description."
 lang: en-US
 
 # Template controls
