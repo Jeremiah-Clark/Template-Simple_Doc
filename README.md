@@ -28,6 +28,9 @@ To create a new document:
 4. Update the file list in `build.sh` to point to your new Markdown files
    - The PDF will begin with the title page, then each of the documents listed in the build file, in the order listed
 
+> [!NOTE]
+> The template file types are included in the .gitignore file (at the very bottom of the file). I like to keep those local-only after setup; delete those lines if you want to keep them in sync.
+
 ### How It Works
 
 The content files are written in standard GitHub Flavored Markdown (GFM). They are fully readable on GitHub as-is. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
