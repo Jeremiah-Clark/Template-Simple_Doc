@@ -131,7 +131,7 @@ Available LaTeX color names include: `red`, `blue`, `green`, `orange`, `yellow`,
 
 Callouts use GitHub's blockquote alert syntax. They render as colored alert boxes on GitHub and as styled framed boxes in the PDF\*.
 
-\* *The Summary and Example callout types are not standard, and thus not directly supported on GitHub. They will work fine, but will not show full formatting.*
+\* *The Summary and Example callout types are not standard, and thus not directly supported on GitHub. They will work fine, but will not show full formatting outside of the script-built PDF.*
 
 #### Supported Types
 
