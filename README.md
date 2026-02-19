@@ -7,6 +7,7 @@ I was looking for a simple way to write in Markdown — using a Git system for v
 ### Project Structure
 
 ```
+├── .gitignore
 ├── master.yaml                    # Metadata + style settings (edit)
 ├── titlepage.tex                  # Title page layout (edit)
 ├── build.sh                       # Build script (edit)
