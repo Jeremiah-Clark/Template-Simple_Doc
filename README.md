@@ -1,6 +1,6 @@
-# SimpleDoc - Template System
+# Simple Doc - Template System
 
-I was looking for a simple way to write in Markdown — using a Git system for versioning and possible collaboration — while still producing consistently formatted, attractive files. I couldn't find anything that quite did what I wanted in the way I wanted. That's why I made this "SimpleDoc" template system. SimpleDoc is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
+I was looking for a simple way to write in Markdown — using a Git system for versioning and possible collaboration — while still producing consistently formatted, attractive files. I couldn't find anything that quite did what I wanted in the way I wanted. That's why I made this "Simple Doc" template system. Simple Doc is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
 
 ---
 
