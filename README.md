@@ -34,7 +34,7 @@ To create a new document:
 
 ### How It Works
 
-The content files are written in standard GitHub Flavored Markdown (GFM). They are fully readable on GitHub as-is. Callout boxes use GitHub's native `> [!WARNING]` syntax, so they render as styled alerts on GitHub and as colored boxes in the PDF.
+The content files are written in standard GitHub Flavored Markdown (GFM). They are fully readable on GitHub as-is.
 
 When you build the PDF, Pandoc reads the Markdown files and converts them to a formatted document using three supporting files:
 
