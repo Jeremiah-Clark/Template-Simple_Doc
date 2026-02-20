@@ -9,7 +9,7 @@
 % Pre-declare hyperref options before any package might load it as a dependency
 \PassOptionsToPackage{unicode}{hyperref}
 
-\usepackage[$if(papersize)$$papersize$paper,$endif$margin=1in,top=1.25in,bottom=1.25in]{geometry}
+\usepackage[$if(papersize)$$papersize$paper,$endif$margin=1in,top=1.25in,bottom=1.0in]{geometry}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -19,6 +19,8 @@
 \usepackage{longtable,booktabs,array}
 \usepackage{amssymb}
 \usepackage{calc}
+\usepackage{float}
+\floatplacement{figure}{H}
 
 % ---------------------------------------------------------------------------
 % Font setup (XeLaTeX / LuaLaTeX)

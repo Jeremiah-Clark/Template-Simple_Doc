@@ -7,8 +7,8 @@
 --
 -- Handles:
 --   1. GFM admonitions (> [!WARNING], > [!TIP], etc.) → LaTeX mdframed environments
---   2. Full-width images
---   3. Page breaks before level-1 headings
+--   2. Images — centered, width-constrained, and height-constrained to fit the page
+--   3. Page breaks before level-1 and level-2 headings
 
 -- ---------------------------------------------------------------------------
 -- 1. GFM Admonitions → LaTeX callout environments
@@ -64,23 +64,68 @@ function BlockQuote(el)
 end
 
 -- ---------------------------------------------------------------------------
--- 2. Full-width images
+-- 2. Images — centered, width- and height-constrained
 -- ---------------------------------------------------------------------------
--- Pandoc's default LaTeX image output doesn't constrain width. This ensures
--- every image scales to \textwidth so large images don't overflow the page.
+-- Converts percentage widths to \linewidth fractions (LaTeX can't handle
+-- bare % in \includegraphics arguments). Also applies a height cap of
+-- 0.82\textheight so tall portrait images never overflow the page regardless
+-- of the width setting. LaTeX's keepaspectratio will honour whichever
+-- constraint is the binding limit.
 
+local function make_includegraphics(src, width_str)
+  local pct = width_str:match("^(%d+)%%$")
+  local latex_width = pct
+    and string.format("%.2f\\linewidth", tonumber(pct) / 100)
+    or width_str
+  return "\\includegraphics[width=" .. latex_width
+    .. ",height=0.82\\textheight,keepaspectratio]{" .. src .. "}"
+end
+
+-- Pandoc 3.x: standalone images become Figure blocks
+function Figure(el)
+  local img = el.content[1]
+  if img and img.t == "Plain" then
+    local inner = img.content[1]
+    if inner and inner.t == "Image" then
+      local width = inner.attributes.width or "80%"
+      return {
+        pandoc.RawBlock("latex", "\\begin{center}"),
+        pandoc.RawBlock("latex", make_includegraphics(inner.src, width)),
+        pandoc.RawBlock("latex", "\\end{center}"),
+      }
+    end
+  end
+end
+
+-- Pandoc 2.x fallback: standalone images in Para blocks
+function Para(el)
+  if #el.content == 1 and el.content[1].t == "Image" then
+    local img = el.content[1]
+    local width = img.attributes.width or "80%"
+    return {
+      pandoc.RawBlock("latex", "\\begin{center}"),
+      pandoc.RawBlock("latex", make_includegraphics(img.src, width)),
+      pandoc.RawBlock("latex", "\\end{center}"),
+    }
+  end
+end
+
+-- Sets a default width on inline Image nodes so the Figure/Para handlers
+-- above always have a value to work with.
 function Image(el)
-  -- Only override if no explicit width was set in the Markdown
   if not el.attributes.width and not el.attributes.height then
-    el.attributes.width = "100%"
+    el.attributes.width = "80%"
   end
   return el
 end
 
 -- ---------------------------------------------------------------------------
--- 3. Page breaks before level-1 headings
+-- 3. Page breaks before headings
 -- ---------------------------------------------------------------------------
--- Inserts \newpage before every H1 so each major section starts on a fresh page.
+-- \newpage before H1 — each major section starts on a fresh page.
+-- \clearpage before H2 — each card / subsection starts on a fresh page,
+--   preventing blank pages caused by tall portrait images being pushed off
+--   the bottom of whatever page the previous card ended on.
 
 function Header(el)
   if el.level == 1 then
