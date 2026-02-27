@@ -17,6 +17,7 @@
 \usepackage{titlesec}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{longtable,booktabs,array}
+\newcounter{none}      % Required: Pandoc wraps tables in \def\LTcaptype{none}
 \usepackage{amssymb}
 \usepackage{calc}
 
@@ -95,13 +96,8 @@
 \titleformat{\subsection}{\large\bfseries\sffamily}{}{0em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\sffamily}{}{0em}{}
 
-% Section numbering: use 0 (not -\maxdimen) to avoid breaking longtable counters.
-% Do NOT use numbersections: false in YAML — this setting handles it safely.
-$if(numbersections)$
-\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
+% Section numbering depth: 0 = none, 1 = sections only, 2 = + subsections, 3 = + subsubsections
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$0$endif$}
 
 % ---------------------------------------------------------------------------
 % Header & footer
