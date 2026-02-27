@@ -13,7 +13,7 @@ logo: images/logo.png     # Will be large and centered on title page
 disclaimer: "All information contained herein, unless otherwise indicated, is considered the intellectual property of ___. Do not disseminate or share such information unless expressly approved by ___ and its constituents."
 toc: true                 # true/false
 toc-depth: 2              # 1-6
-numbersections: true      # true/false
+numbersections: true      # do not set to "false". remove this line to remove numbering (see ReadMe)
 
 # PDF settings
 fontsize: 11pt

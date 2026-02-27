@@ -96,7 +96,9 @@ All settings live in `master.yaml`. Every style setting has a built-in default, 
 | `papersize` | `letter` | Paper size (`letter` or `a4`) |
 | `toc` | `true` | Whether to generate a table of contents |
 | `toc-depth` | `2` | How many heading levels to include in the TOC |
-| `numbersections` | `true` | Whether to automatically number sections in the TOC |
+| `numbersections` | `true` | Set to `true` to add numbers before section headings (1, 1.1, etc.). Omit or leave unset for no numbering. **Do not set this to `false` explicitly** — see note below. |
+
+> **Note on `numbersections`:** Section numbering is off by default. If you explicitly set `numbersections: false` in your YAML, Pandoc handles it in a way that breaks tables (`No counter 'none' defined` error). Simply omit the setting to keep numbering off. Set it to `true` only if you want numbered headings.
 
 ### Fonts
 
