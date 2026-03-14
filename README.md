@@ -51,14 +51,67 @@ When you build the PDF, Pandoc reads the Markdown files and converts them to a f
 - A LaTeX distribution with XeLaTeX (such as [TeX Live](https://tug.org/texlive/) or [MiKTeX](https://miktex.org/))
 - The fonts specified in `master.yaml` must be installed on your system (Noto Sans and Noto Sans Mono by default, available from [Google Fonts](https://fonts.google.com/noto))
 
-#### Build Command
+### Installation
+
+Pick your platform and run the commands below. This installs everything the template needs in one shot.
+
+**Ubuntu / Debian:**
+
+```bash
+# Pandoc
+sudo apt install pandoc
+
+# TeX Live (XeLaTeX + all required LaTeX packages)
+sudo apt install texlive-xetex texlive-latex-extra texlive-fonts-recommended texlive-pictures
+
+# Default fonts
+sudo apt install fonts-noto-core
+```
+
+**macOS (Homebrew):**
+
+```bash
+# Pandoc
+brew install pandoc
+
+# Full TeX distribution (includes XeLaTeX and all packages)
+brew install --cask mactex
+
+# Default fonts
+brew install --cask font-noto-sans font-noto-sans-mono
+```
+
+If you prefer a smaller install, use BasicTeX instead of MacTeX and install packages manually:
+
+```bash
+brew install --cask basictex
+sudo tlmgr update --self
+sudo tlmgr install enumitem mdframed titlesec soul booktabs bookmark \
+  newunicodechar zref needspace pgf xcolor fancyhdr fontspec
+```
+
+**Windows:**
+
+1. Install [Pandoc](https://pandoc.org/installing.html)
+2. Install [MiKTeX](https://miktex.org/download) — during setup, choose "Yes" for automatic package installation. MiKTeX will download any missing packages on first build.
+3. Install [Noto Sans and Noto Sans Mono](https://fonts.google.com/noto) — download, unzip, and right-click → "Install for all users"
+
+### Verify Your Installation
+
+```bash
+pandoc --version        # Should show 3.x
+xelatex --version      # Should show XeTeX
+fc-list | grep "Noto"  # Should list Noto Sans and Noto Sans Mono
+```
+
+### Build Command
 
 ```bash
 chmod +x build.sh
 ./build.sh
 ```
 
-This generates `output.pdf` in the project directory.
+This generates the output PDF in the project directory (the filename is set at the end of `build.sh`).
 
 #### A Note on Pandoc Versions
 
