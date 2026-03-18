@@ -1,6 +1,6 @@
 # Simple Doc - Template System
 
-I was looking for a simple way to write in Markdown — using a Git system for versioning and possible collaboration — while still producing consistently formatted, attractive files. I couldn't find anything that quite did what I wanted in the way I wanted. That's why I made this "Simple Doc" template system. Simple Doc is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
+I was looking for a simple way to write in Markdown—using a Git system for versioning and possible collaboration—while still producing consistently formatted, attractive files. I couldn't find anything that quite did what I wanted in the way I wanted. That's why I made this "Simple Doc" template system. Simple Doc is meant to be simple and reusable. It is designed to produce cleanly and consistently styled PDFs from pure GitHub-flavored Markdown files. The content and styling are kept separate to keep the files as readable and flexible as possible.
 
 ---
 
@@ -25,7 +25,7 @@ To create a new document:
 2. Edit `master.yaml` with your document’s metadata and style preferences
    - Edit `titlepage.tex` if you want a different title page layout
 3. Write your content as standard GFM Markdown files
-   - Make each section its own file for maximum flexibility 
+   - Make each section its own file for greater flexibility
 4. Update the file list in `build.sh` to point to your new Markdown files
    - The PDF will begin with the title page, then each of the documents listed in the build file, in the order listed
 
@@ -38,7 +38,7 @@ The content files are written in standard GitHub Flavored Markdown (GFM). They a
 
 When you build the PDF, Pandoc reads the Markdown files and converts them to a formatted document using three supporting files:
 
-- **`template.tex`** — The reusable formatting template. Controls typography, colors, callout box styling, headers/footers, and overall page layout. You should not need to edit this file unless you want to change the structure of the document layout itself.
+- **`template.tex`** — The reusable formatting template. Controls typography, colors, callout box styling, headers/footers, and overall page layout. You don't need to edit this file unless you want to change the structure of the document layout itself..
 - **`titlepage.tex`** — The title page layout. Edit this file to change how the title page looks (rearrange elements, change spacing, etc.). It is loaded by the template automatically.
 - **`gfm-to-latex.lua`** — A filter that bridges GFM features to the PDF. It converts callout blockquotes into styled boxes, makes images full-width, and inserts page breaks before each major section. You should not need to edit this file.
 - **`master.yaml`** — All document metadata and style settings in one place. This is the primary file you edit to change the document's title, author, fonts, colors, and other options. See **Settings Reference** below for a full list.
@@ -94,7 +94,7 @@ sudo tlmgr install enumitem mdframed titlesec soul booktabs bookmark \
 
 1. Install [Pandoc](https://pandoc.org/installing.html)
 2. Install [MiKTeX](https://miktex.org/download) — during setup, choose "Yes" for automatic package installation. MiKTeX will download any missing packages on first build.
-3. Install [Noto Sans and Noto Sans Mono](https://fonts.google.com/noto) — download, unzip, and right-click → "Install for all users"
+3. Install [Noto Sans fonts](https://fonts.google.com/noto) — download, unzip, and right-click → "Install for all users"
 
 ### Verify Your Installation
 
@@ -115,7 +115,7 @@ This generates the output PDF in the project directory (the filename is set at t
 
 #### A Note on Pandoc Versions
 
-The build script uses `--from gfm-alerts` instead of `--from gfm`. This disables Pandoc's built-in alert handling (added in 3.1.7), which would otherwise intercept callouts before the Lua filter can process them. If your version of Pandoc does not recognize `gfm-alerts`, it will print a harmless warning and continue. The build will still succeed.
+The build script uses `--from gfm-alerts` instead of `--from gfm`. This disables Pandoc's built-in alert handling (added in 3.1.7), which would otherwise intercept callouts before the Lua filter can process them. If your version of Pandoc doesn't recognize `gfm-alerts`, Pandoc will print a harmless warning and continue. The build will still succeed.
 
 ---
 
