@@ -1,12 +1,17 @@
 % titlepage.tex — Title page layout (pure LaTeX, edit per project)
 %
 % Available commands (populated from master.yaml via template.tex):
-%   \doctitle       — Document title
-%   \docauthor      — Author name
-%   \docdate        — Date string
-%   \docversion     — Version string (only defined if version: is set in YAML)
-%   \doclogo        — Path to logo image (only defined if logo: is set in YAML)
-%   \docdisclaimer  — Disclaimer text (only defined if disclaimer: is set in YAML)
+%   \doctitle           — Document title
+%   \docauthor          — Author name
+%   \docdate            — Date string
+%   \docversion         — Version string (only defined if version: is set in YAML)
+%   \doclogo            — Path to logo image (only defined if logo: is set in YAML)
+%   \docdisclaimer      — Disclaimer text (only defined if disclaimer: is set in YAML)
+%   \doclogowidth       — Logo width as a fraction of \textwidth (logo-width in YAML)
+%   \doctppostrule      — Vertical space after the top rule, before the title
+%   \doctpposttitle     — Vertical space after the title, before the author
+%   \doctppostauthor    — Vertical space after the author, before the date
+%   \doctppostdate      — Vertical space after the date, before the logo
 
 \begin{titlepage}
   \thispagestyle{empty}
@@ -22,20 +27,20 @@
 
   \begin{center}
     \rule{\linewidth}{0.4pt}
-    \vspace{2em}
+    \vspace{\doctppostrule}
 
     {\Huge\sffamily \doctitle}
 
-    \vspace{0.75em}
+    \vspace{\doctpposttitle}
     {\large\sffamily \docauthor}
 
-    \vspace{0.5em}
+    \vspace{\doctppostauthor}
     {\docdate}
 
-    \vspace{3em}
+    \vspace{\doctppostdate}
 
     \ifdefined\doclogo
-      \includegraphics[width=0.8\textwidth]{\doclogo}
+      \includegraphics[width=\doclogowidth\textwidth]{\doclogo}
     \fi
 
     \vfill

@@ -9,7 +9,15 @@
 % Pre-declare hyperref options before any package might load it as a dependency
 \PassOptionsToPackage{unicode}{hyperref}
 
-\usepackage[$if(papersize)$$papersize$paper,$endif$margin=1in,top=1.25in,bottom=1.25in]{geometry}
+\usepackage[%
+  $if(papersize)$$papersize$paper,$endif$%
+  margin=$if(margin)$$margin$$else$1in$endif$,%
+  top=$if(margin-top)$$margin-top$$else$1.25in$endif$,%
+  bottom=$if(margin-bottom)$$margin-bottom$$else$1.25in$endif$,%
+  headheight=$if(headheight)$$headheight$$else$14pt$endif$,%
+  headsep=$if(headsep)$$headsep$$else$12pt$endif$,%
+  footskip=$if(footskip)$$footskip$$else$30pt$endif$%
+]{geometry}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -107,8 +115,8 @@
 \fancyhead{}
 \fancyfoot[L]{$title$$if(version)$\hspace{0.75em}{\small\color{black!60}v$version$}$endif$}
 \fancyfoot[R]{Page \thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{$if(header-rule)$$header-rule$$else$0.4pt$endif$}
+\renewcommand{\footrulewidth}{$if(footer-rule)$$footer-rule$$else$0.4pt$endif$}
 \fancypagestyle{plain}{\fancyhf{}}
 
 % ---------------------------------------------------------------------------
@@ -187,6 +195,12 @@ $endif$
 $if(disclaimer)$
 \newcommand{\docdisclaimer}{$disclaimer$}
 $endif$
+% Title page layout controls (from master.yaml)
+\newcommand{\doclogowidth}{$if(logo-width)$$logo-width$$else$0.8$endif$}
+\newcommand{\doctppostrule}{$if(titlepage-post-rule)$$titlepage-post-rule$$else$2em$endif$}
+\newcommand{\doctpposttitle}{$if(titlepage-post-title)$$titlepage-post-title$$else$0.75em$endif$}
+\newcommand{\doctppostauthor}{$if(titlepage-post-author)$$titlepage-post-author$$else$0.5em$endif$}
+\newcommand{\doctppostdate}{$if(titlepage-post-date)$$titlepage-post-date$$else$3em$endif$}
 \input{titlepage}
 
 % --- Table of contents ---

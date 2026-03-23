@@ -20,6 +20,35 @@ fontsize: 11pt
 papersize: letter         # letter/a4
 
 # ---------------------------------------------------------------------------
+# Page layout
+# ---------------------------------------------------------------------------
+# Margins — standard LaTeX dimensions (in, cm, mm, pt, em)
+margin: "1in"             # Left and right margins
+margin-top: "1.25in"      # Top margin
+margin-bottom: "1.25in"   # Bottom margin
+
+# Header/footer geometry — controls the spacing between the rules and the text
+headheight: "14pt"        # Height of the header box
+headsep: "12pt"           # Gap between the header rule and the body text
+footskip: "30pt"          # Distance from the body bottom to the footer baseline
+
+# Header/footer rule thickness (set to 0pt to hide a rule)
+header-rule: "0.4pt"
+footer-rule: "0.4pt"
+
+# ---------------------------------------------------------------------------
+# Title page
+# ---------------------------------------------------------------------------
+# Logo width as a fraction of the text width (0.0–1.0)
+logo-width: "0.8"
+
+# Vertical spacing between title page elements — standard LaTeX dimensions
+titlepage-post-rule: "2em"      # After the top rule, before the title
+titlepage-post-title: "0.75em"  # After the title, before the author
+titlepage-post-author: "0.5em"  # After the author, before the date
+titlepage-post-date: "3em"      # After the date, before the logo
+
+# ---------------------------------------------------------------------------
 # Style settings
 # ---------------------------------------------------------------------------
 # Fonts
