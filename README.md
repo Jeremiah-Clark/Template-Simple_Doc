@@ -242,3 +242,9 @@ Add your custom title text after the type marker. In the PDF, this replaces the 
 ```
 
 This creates a callout box titled "Example Tax Withholding" instead of "Tip".
+
+## Changelog
+
+* 2026-02-27 **v0.5** — Initial release of finalized template system. 
+* 2026-03-14 **v0.8** — Added streamlined instructions for installing required Pandoc and LaTeX packages. 
+* 2026-03-22 **v1.0** — Moved margin, header and footer, and title page layout controls into the YAML file. 
