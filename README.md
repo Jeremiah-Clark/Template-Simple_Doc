@@ -125,35 +125,35 @@ All settings live in `master.yaml`. Every style setting has a built-in default, 
 
 ### Document Metadata
 
-| Setting    | Description                                                  | Example                  |
-| ---------- | ------------------------------------------------------------ | ------------------------ |
-| `title`    | Document title (appears on title page, footer, and PDF metadata) | `"My Document"`          |
-| `author`   | Author name                                                  | `"Jane Smith"`           |
-| `date`     | Date string (any format)                                     | `"2026-02-11"`           |
+| Setting    | Description                                                                     | Example                  |
+| ---------- | ------------------------------------------------------------------------------- | ------------------------ |
+| `title`    | Document title (appears on title page, footer, and PDF metadata)                | `"My Document"`          |
+| `author`   | Author name                                                                     | `"Jane Smith"`           |
+| `date`     | Date string (any format)                                                        | `"2026-02-11"`           |
 | `version`  | Version number (appears in top-right of title page and in footer; omit to hide) | `"1.0"`                  |
-| `keywords` | List of keywords for PDF metadata                            | `[gaming, regulations]`  |
-| `subject`  | Subject line for PDF metadata                                | `"Industry regulations"` |
+| `keywords` | List of keywords for PDF metadata                                               | `[gaming, regulations]`  |
+| `subject`  | Subject line for PDF metadata                                                   | `"Industry regulations"` |
 
 ### Title Page Controls
 
-| Setting                 | Description                                                  | Example                   |
-| ----------------------- | ------------------------------------------------------------ | ------------------------- |
+| Setting                 | Description                                                     | Example                   |
+| ----------------------- | --------------------------------------------------------------- | ------------------------- |
 | `logo`                  | Path to a logo image displayed on the title page (omit to hide) | `"images/logo.png"`       |
-| `disclaimer`            | Text displayed in a warning box at the bottom of the title page (supports **bold** via `**text**`; omit to hide) | `"**Not legal advice.**"` |
-| `logo-width`            | Logo width as a fraction of the text width                   | `"0.8"`                   |
-| `titlepage-post-rule`   | Space after the top rule, before the title                   | `"2em"`                   |
-| `titlepage-post-title`  | Space after the title, before the author                     | `"0.75em"`                |
-| `titlepage-post-author` | Space after the author, before the date                      | `"0.5em"`                 |
-| `titlepage-post-date`   | Space after the date, before the logo                        | `"3em"`                   |
+| `disclaimer`            | Warning box at the bottom of the title page (omit to hide)      | `"**Not legal advice.**"` |
+| `logo-width`            | Logo width as a fraction of the text width                      | `"0.8"`                   |
+| `titlepage-post-rule`   | Space after the top rule, before the title                      | `"2em"`                   |
+| `titlepage-post-title`  | Space after the title, before the author                        | `"0.75em"`                |
+| `titlepage-post-author` | Space after the author, before the date                         | `"0.5em"`                 |
+| `titlepage-post-date`   | Space after the date, before the logo                           | `"3em"`                   |
 
 ### PDF and Layout
 
-| Setting       | Default  | Description                                                  |
-| ------------- | -------- | ------------------------------------------------------------ |
-| `fontsize`    | `11pt`   | Base font size                                               |
-| `papersize`   | `letter` | Paper size (`letter` or `a4`)                                |
-| `toc`         | `true`   | Whether to generate a table of contents                      |
-| `toc-depth`   | `2`      | How many heading levels to include in the TOC                |
+| Setting       | Default  | Description                                                                                                 |
+| ------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| `fontsize`    | `11pt`   | Base font size                                                                                              |
+| `papersize`   | `letter` | Paper size (`letter` or `a4`)                                                                               |
+| `toc`         | `true`   | Whether to generate a table of contents                                                                     |
+| `toc-depth`   | `2`      | How many heading levels to include in the TOC                                                               |
 | `secnumdepth` | `0`      | Section numbering depth. `0` = no numbers, `1` = sections only, `2` = + subsections, `3` = + subsubsections |
 
 ### Margins
